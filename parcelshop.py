@@ -1,3 +1,4 @@
+import random
 
 # global variables
 number_of_parcels = 0
@@ -7,6 +8,7 @@ max_empty_space = 0
 # variables for while
 parcel_weight = 0
 item_weight = 1  # initial value is 1 so we can enter the loop
+counter = 0 # variable for iterating inside the while loop
 
 # welcome message
 print("""Welcome to our parcelshop! We will send all your items! 
@@ -15,8 +17,10 @@ Remember: the weight of one item must be between 1 and 10 kg!")
 When you are finished entering your items, type "0" as you have 0 more kilograms to send :)""")
 
 # entering data
-while item_weight != 0:  # until the user types 0 we repeat adding items
-    item_weight = int(input("Type the weight of the item: "))
+# while item_weight:  # until the user types 0 we repeat adding items
+while counter < 100:
+    # item_weight = int(input("Type the weight of the item: "))
+    item_weight = random.randint(1, 10)
     if item_weight != 0:  # we proceed if the current item is not zero
         condition1 = item_weight >= 1
         condition2 = item_weight <= 10
@@ -32,6 +36,7 @@ while item_weight != 0:  # until the user types 0 we repeat adding items
         else:
             print("YOU ARE DOING IT WRONG (ERROR)")  # if the item is not the right weight
             break
+    counter += 1
 total_weight += parcel_weight  # we add the weight of the last parcel
 if 20 - parcel_weight > max_empty_space:  # again: if empty space in last parcel is bigger than previous
     max_empty_space = 20 - parcel_weight
